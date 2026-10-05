@@ -33,7 +33,94 @@
 html, body {
   background-color: #03050a;
   color: #ffffff;
-  overflow-x: hidden;
+  overflow-x: clip;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
 }
+
+@keyframes waveformPulse {
+  0% {
+    transform: scaleY(0.35);
+    opacity: 0.55;
+  }
+  100% {
+    transform: scaleY(1.25);
+    opacity: 1;
+  }
+}
+
+@keyframes connectingPulse {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.85);
+  }
+  100% {
+    opacity: 0.9;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes smoothSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes smoothPopIn {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.95);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.01);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes smoothFadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+}
+
+@keyframes badgePop {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.94);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.anim-smooth-slide {
+  animation: smoothSlideUp 0.42s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.anim-smooth-pop {
+  animation: smoothPopIn 0.48s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.anim-fade-out {
+  animation: smoothFadeOut 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.anim-badge-pop {
+  animation: badgePop 0.42s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+

@@ -1,126 +1,97 @@
 "use client"
 
-import * as React from "react"
-import { motion } from "framer-motion"
-import { Menu, X } from "lucide-react"
+import React, { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 
-interface NavItem {
-  label: string
-  href: string
-}
-
-const navItems: NavItem[] = [
-  { label: "Home", href: "#" },
+const navItems = [
   { label: "Product", href: "#product" },
-  { label: "Our Thesis", href: "#thesis" },
-  { label: "About Us", href: "#about" },
+  { label: "Our thesis", href: "#thesis" },
+  { label: "About us", href: "#about" },
   { label: "Pricing", href: "#pricing" },
 ]
 
 export function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
-  const [activeItem, setActiveItem] = React.useState("Home")
+  const [menuOpen, setMenuOpen] = useState(false)
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white border-b border-slate-100 shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
-        <div className="w-full flex h-16 items-center justify-between px-6 lg:px-10">
-          {/* Brand Name Text */}
-          <a href="#" className="flex items-center select-none py-1 group">
-            <span className="text-xl font-bold tracking-tight text-[#0F172A]">
-              Operin<span className="text-[#2563EB]">Labs</span>
-            </span>
+    <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
+      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-14 py-5 flex items-center justify-between gap-6 pointer-events-auto">
+        {/* OperinLabs Logo */}
+        <a href="#" className="flex items-center select-none">
+          <img
+            src="/assets/logo-light.png"
+            alt="OperinLabs"
+            className="h-[26px] w-auto block"
+            onError={(e) => {
+              const target = e.currentTarget
+              target.style.display = "none"
+              if (target.nextElementSibling) {
+                (target.nextElementSibling as HTMLElement).style.display = "block"
+              }
+            }}
+          />
+          <span
+            style={{ display: "none" }}
+            className="text-xl font-bold tracking-tight text-[#EEF0F6]"
+          >
+            Operin<span className="text-[#5B86FF]">Labs</span>
+          </span>
+        </a>
+
+        {/* Right Action Buttons */}
+        <div className="flex items-center gap-2.5">
+          {/* Book a Demo Pill Button */}
+          <a
+            href="#book-demo"
+            className="text-[#EEF0F6] px-4 py-2.5 rounded-full text-sm font-medium border border-[#EEF0F6]/16 bg-[#070A14]/35 hover:border-[#EEF0F6]/45 transition-colors backdrop-blur-md shadow-sm"
+          >
+            Book a demo
           </a>
 
-          {/* Desktop Navigation & CTA grouped to the right side */}
-          <div className="hidden md:flex items-center gap-7 lg:gap-9">
-            <nav className="flex items-center gap-6 lg:gap-8">
-              {navItems.map((item) => {
-                const isActive = activeItem === item.label
-                return (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    onClick={() => setActiveItem(item.label)}
-                    className={`relative py-1 text-sm transition-colors duration-150 ${
-                      isActive
-                        ? "font-semibold text-[#0F172A]"
-                        : "font-normal text-[#475569] hover:text-[#0F172A]"
-                    }`}
-                  >
-                    {item.label}
-
-                    {/* Active Blue Bottom Underline Bar */}
-                    {isActive && (
-                      <motion.div
-                        layoutId="nav-active-underline"
-                        className="absolute -bottom-2 left-0 right-0 h-[2.5px] rounded-full bg-[#0062FF]"
-                        transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                      />
-                    )}
-                  </a>
-                )
-              })}
-            </nav>
-
-            {/* Book a Demo Button */}
-            <button
-              type="button"
-              className="rounded-full bg-[#0062FF] px-5 py-2.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(0,98,255,0.35)] hover:bg-[#0052e0] hover:shadow-[0_6px_22px_rgba(0,98,255,0.45)] hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
-            >
-              Book a Demo
-            </button>
-          </div>
-
-          {/* Mobile Hamburger Toggle */}
-          <div className="flex md:hidden">
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="inline-flex items-center justify-center rounded-lg p-2 text-slate-700 hover:bg-slate-100 focus:outline-none"
-              aria-label="Toggle Navigation Menu"
-            >
-              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu Dropdown */}
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="md:hidden border-b border-slate-200 bg-white px-6 py-4 shadow-lg"
+          {/* Circular Hamburger Menu Button (toggles top navbar) */}
+          <button
+            type="button"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            className="w-11 h-11 rounded-full border border-[#EEF0F6]/16 bg-[#070A14]/35 hover:border-[#EEF0F6]/45 flex flex-col items-center justify-center gap-[5px] transition-colors cursor-pointer backdrop-blur-md shadow-sm"
           >
-            <div className="flex flex-col space-y-3">
+            {menuOpen ? (
+              <span className="text-[#EEF0F6] text-xl leading-none">×</span>
+            ) : (
+              <>
+                <span className="w-4 h-[1.5px] bg-[#EEF0F6] block rounded-full" />
+                <span className="w-4 h-[1.5px] bg-[#EEF0F6] block rounded-full" />
+              </>
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Top Navbar Row (Revealed when hamburger is clicked) */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.98 }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
+            className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-14 pb-4 pointer-events-auto"
+          >
+            <nav className="flex items-center justify-between sm:justify-start gap-5 sm:gap-9 px-6 py-3.5 rounded-2xl bg-[#070A14]/90 border border-[#EEF0F6]/14 backdrop-blur-xl shadow-[0_16px_36px_rgba(0,0,0,0.5)]">
               {navItems.map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
-                  onClick={() => {
-                    setActiveItem(item.label)
-                    setMobileMenuOpen(false)
-                  }}
-                  className={`py-2 text-base font-medium transition-colors ${
-                    activeItem === item.label
-                      ? "text-[#0062FF] font-semibold"
-                      : "text-slate-600 hover:text-slate-900"
-                  }`}
+                  onClick={() => setMenuOpen(false)}
+                  className="text-sm sm:text-[15px] font-medium text-[#EEF0F6]/85 hover:text-white transition-colors py-1"
                 >
                   {item.label}
                 </a>
               ))}
-              <div className="pt-2">
-                <button
-                  type="button"
-                  className="w-full rounded-full bg-[#0062FF] py-2.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(0,98,255,0.3)] hover:bg-[#0052e0]"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Book a Demo
-                </button>
-              </div>
-            </div>
+            </nav>
           </motion.div>
         )}
-      </header>
+      </AnimatePresence>
+    </header>
   )
 }
