@@ -7,27 +7,32 @@ import { FlickerLamp } from "@/components/ui/flicker-lamp"
 import { GlowyWavesCanvas } from "@/components/hero/glowy-waves-canvas"
 
 const containerVariants: Variants = {
-  hidden: { opacity: 1, y: 0 },
+  hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, staggerChildren: 0.08 },
+    transition: {
+      staggerChildren: 0.22,
+      delayChildren: 0.2,
+    },
   },
 }
 
 const itemVariants: Variants = {
-  hidden: { opacity: 1, y: 0 },
+  hidden: { opacity: 0, y: 28 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+    transition: {
+      duration: 1.2,
+      ease: [0.22, 1, 0.36, 1],
+    },
   },
 }
 
 export function GlowyWavesHero() {
   return (
     <section
-      className="relative isolate flex min-h-[calc(100vh-4rem)] w-full items-center justify-center overflow-hidden bg-background pt-16 sm:pt-20 pb-20"
+      className="relative isolate flex min-h-[calc(100vh-4rem)] w-full items-center justify-center overflow-hidden bg-background pt-16 sm:pt-20 pb-24"
       role="region"
       aria-label="Glowing waves hero section"
     >
@@ -43,7 +48,21 @@ export function GlowyWavesHero() {
         <div className="absolute bottom-10 right-10 h-[360px] w-[360px] rounded-full bg-blue-500/[0.08] blur-[120px]" />
       </div>
 
-      {/* 4. Content Container (relative z-20, in front of the lamp light) */}
+      {/* 4. Soft Text Contrast Buffer (Ensures 100% text legibility over glowing wave canvas) */}
+      <div
+        className="absolute inset-0 z-10 pointer-events-none flex items-center justify-center"
+        aria-hidden="true"
+      >
+        <div
+          className="w-full max-w-4xl h-[420px] rounded-full blur-[90px] opacity-75"
+          style={{
+            background:
+              "radial-gradient(circle, rgba(3,5,10,0.85) 0%, rgba(3,5,10,0.45) 55%, transparent 100%)",
+          }}
+        />
+      </div>
+
+      {/* 5. Content Container (relative z-20, in front of the lamp light and contrast shield) */}
       <div className="relative z-20 mx-auto flex w-full max-w-6xl flex-col items-center px-6 text-center md:px-8 lg:px-12">
         <motion.div
           variants={containerVariants}
@@ -51,13 +70,12 @@ export function GlowyWavesHero() {
           animate="visible"
           className="w-full flex flex-col items-center"
         >
-          {/* Badge Pill */}
+          {/* Eyebrow Label: Simply Introducing */}
           <motion.div
             variants={itemVariants}
-            className="mb-5 inline-flex items-center gap-1.5 rounded-full border border-blue-500/25 bg-blue-950/30 px-3 py-1 text-[11px] font-medium tracking-wide text-blue-300 backdrop-blur-md shadow-[0_0_12px_rgba(37,99,235,0.15)]"
+            className="mb-4 text-xs sm:text-[13px] font-semibold tracking-widest text-blue-400 uppercase"
           >
-            <Check className="h-3 w-3 text-blue-400 stroke-[2.5]" aria-hidden="true" />
-            <span>Piloting in 6+ hospitals</span>
+            Introducing
           </motion.div>
 
           {/* Hero Main Headline */}
@@ -71,26 +89,22 @@ export function GlowyWavesHero() {
             </span>
           </motion.h1>
 
-          {/* Subtitle */}
+          {/* Subtitle (Concise 2-line high-impact value prop) */}
           <motion.p
             variants={itemVariants}
-            className="mx-auto mb-9 max-w-4xl text-sm sm:text-base md:text-lg text-zinc-300/90 leading-relaxed font-normal"
+            className="mx-auto mb-9 max-w-2xl text-sm sm:text-base md:text-lg text-zinc-300/90 leading-relaxed font-normal"
           >
-            OperinLabs gives healthcare organisations an AI workforce for autonomous
-            healthcare operations, starting with an agent that works around the
-            clock, answering calls, booking appointments, sending reminders, and
-            following up in Assamese, Bengali, Hindi, and English, turning
-            conversations into decisions, actions, and completed workflows.
+            Autonomous AI employees for clinics and hospitals — answering calls, scheduling appointments, and managing patient care 24/7 across 4 Indian languages.
           </motion.p>
 
           {/* CTA Action Buttons */}
           <motion.div
             variants={itemVariants}
-            className="mb-6 flex flex-col items-center justify-center gap-4 sm:flex-row w-full sm:w-auto"
+            className="flex flex-col items-center justify-center gap-4 sm:flex-row w-full sm:w-auto"
           >
             <Button
               size="lg"
-              className="group relative w-full sm:w-auto gap-2.5 rounded-full bg-blue-600 px-7 py-5 text-sm font-semibold tracking-wide text-white shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:bg-blue-500 hover:shadow-[0_0_28px_rgba(59,130,246,0.6)] transition-all"
+              className="group relative w-full sm:w-auto gap-2.5 rounded-full bg-blue-600 px-7 py-5 text-sm font-semibold tracking-wide text-white shadow-[0_0_24px_rgba(37,99,235,0.4)] hover:bg-blue-500 hover:shadow-[0_0_32px_rgba(59,130,246,0.6)] transition-all cursor-pointer"
             >
               Talk to your receptionist
               <ArrowRight
@@ -101,6 +115,32 @@ export function GlowyWavesHero() {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* 6. Horizontal Base Trust & Capability Indicators (Transparent, No BG, Blue Tick Icons) */}
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2, delay: 0.95, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute bottom-6 sm:bottom-8 inset-x-0 z-20 flex flex-wrap items-center justify-center gap-x-8 sm:gap-x-10 lg:gap-x-12 gap-y-3 px-6 pointer-events-auto"
+      >
+        {/* 1. Piloting in 6+ hospitals */}
+        <div className="inline-flex items-center gap-2 text-xs sm:text-[13.5px] font-medium text-zinc-300 tracking-wide">
+          <Check className="h-4 w-4 text-blue-400 stroke-[2.5] shrink-0" aria-hidden="true" />
+          <span>Piloting in 6+ hospitals</span>
+        </div>
+
+        {/* 2. Assamese, Bengali, Hindi & English */}
+        <div className="inline-flex items-center gap-2 text-xs sm:text-[13.5px] font-medium text-zinc-300 tracking-wide">
+          <Check className="h-4 w-4 text-blue-400 stroke-[2.5] shrink-0" aria-hidden="true" />
+          <span>Assamese, Bengali, Hindi &amp; English</span>
+        </div>
+
+        {/* 3. 24/7 availability */}
+        <div className="inline-flex items-center gap-2 text-xs sm:text-[13.5px] font-medium text-zinc-300 tracking-wide">
+          <Check className="h-4 w-4 text-blue-400 stroke-[2.5] shrink-0" aria-hidden="true" />
+          <span>24/7 availability</span>
+        </div>
+      </motion.div>
     </section>
   )
 }

@@ -251,8 +251,7 @@ export function RadialOrbitalTimeline() {
           ref={headerRef}
           className="absolute top-8 left-6 sm:left-12 lg:left-16 z-30 max-w-2xl pointer-events-none will-change-transform"
         >
-          <div className="mb-2.5 inline-flex items-center gap-2 rounded-full border border-blue-500/25 bg-blue-950/40 px-3 py-1 text-[11px] font-semibold tracking-wider text-blue-400 uppercase backdrop-blur-md pointer-events-auto">
-            <span className="h-1.5 w-1.5 rounded-full bg-blue-400 animate-pulse" />
+          <div className="mb-2.5 text-[11px] font-semibold tracking-wider text-blue-400 uppercase pointer-events-auto">
             The workforce
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">

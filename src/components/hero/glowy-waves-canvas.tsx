@@ -123,7 +123,7 @@ export function GlowyWavesCanvas() {
 
       for (let x = 0; x <= width; x += 4) {
         const dx = x - mouseRef.current.x
-        const dy = height * 0.52 - mouseRef.current.y
+        const dy = height * 0.60 - mouseRef.current.y
         const distance = Math.sqrt(dx * dx + dy * dy)
         const influence = Math.max(0, 1 - distance / influenceRadius)
         const mouseEffect =
@@ -132,7 +132,7 @@ export function GlowyWavesCanvas() {
           Math.sin(time * 0.001 + x * 0.01 + wave.offset)
 
         const y =
-          height * 0.52 +
+          height * 0.60 +
           Math.sin(x * wave.frequency + time * 0.002 + wave.offset) *
             wave.amplitude +
           Math.sin(x * wave.frequency * 0.4 + time * 0.003) *
