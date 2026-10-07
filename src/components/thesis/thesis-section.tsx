@@ -89,11 +89,13 @@ export function ThesisSection() {
             return (
               <motion.div
                 key={item.id}
+                tabIndex={0}
+                role="article"
                 initial={{ opacity: 0, y: 32 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="w-full max-w-[500px] relative flex flex-col justify-between min-h-[380px] sm:min-h-[420px] rounded-3xl border border-white/[0.08] bg-[#121217]/85 p-7 sm:p-9 lg:p-10 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.65)] hover:border-[#3ca2fa]/35 transition-colors duration-200"
+                className="w-full max-w-[500px] relative flex flex-col justify-between min-h-[380px] sm:min-h-[420px] rounded-3xl border border-white/[0.08] bg-[#121217]/85 p-7 sm:p-9 lg:p-10 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.65)] hover:border-[#3ca2fa]/30 focus:border-[#3ca2fa]/30 focus:outline-none transition-colors duration-300"
               >
                 {/* Minimal line icon in electric blue, directly on card */}
                 <div className="mb-12 sm:mb-16">

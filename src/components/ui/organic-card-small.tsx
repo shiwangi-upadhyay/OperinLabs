@@ -63,7 +63,7 @@ export function OrganicCardSmall({
       className={cn(
         "group/calloutCard relative flex h-full w-full flex-col cursor-pointer",
         "outline-none transition-transform duration-300",
-        "focus-visible:ring-1 focus-visible:ring-white/40 focus-visible:rounded-3xl",
+        "focus-visible:ring-1 focus-visible:ring-[#3ca2fa]/30 focus-visible:rounded-3xl",
         className
       )}
       data-state={interactiveActive ? "active" : "idle"}
@@ -90,7 +90,7 @@ export function OrganicCardSmall({
           className={cn(
             "flex w-full flex-1 flex-col justify-between rounded-t-3xl p-6 sm:p-7 text-[#EEF0F6]",
             "border-t border-l border-r transition-colors duration-300",
-            interactiveActive ? "border-white/[0.24]" : "border-white/[0.08]"
+            interactiveActive ? "border-[#3ca2fa]/30" : "border-white/[0.08]"
           )}
           style={{ backgroundColor: surfaceColor }}
         >
@@ -160,7 +160,7 @@ export function OrganicCardSmall({
             <motion.path
               animate={{
                 d: interactiveActive ? STROKE_PATH_HOVER : STROKE_PATH_IDLE,
-                stroke: interactiveActive ? "rgba(255,255,255,0.24)" : "rgba(255,255,255,0.08)",
+                stroke: interactiveActive ? "rgba(60,162,250,0.30)" : "rgba(255,255,255,0.08)",
               }}
               fill="none"
               strokeWidth="1"
