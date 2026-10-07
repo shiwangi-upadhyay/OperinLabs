@@ -1,6 +1,8 @@
 import { Navbar } from "@/components/navbar";
 import { GlowyWavesHero } from "@/components/ui/glowy-waves-hero-shadcnui";
 import { RadialOrbitalTimeline } from "@/components/radial-orbital-timeline";
+import { ThesisSection } from "@/components/thesis/thesis-section";
+import { Footer } from "@/components/footer";
 
 export default function HomePage() {
   return (
@@ -13,6 +15,12 @@ export default function HomePage() {
 
       {/* 3. The Workforce: Scroll-Driven Radial Orbital Ferris Wheel */}
       <RadialOrbitalTimeline />
+
+      {/* 4. Our Thesis: Clinical Architecture Console */}
+      <ThesisSection />
+
+      {/* 5. Footer with TextHoverEffect and CTA Console */}
+      <Footer />
     </main>
   );
 }

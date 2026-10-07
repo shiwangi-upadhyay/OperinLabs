@@ -219,16 +219,16 @@ export function RadialOrbitalTimeline() {
     <section
       ref={secRef}
       id="workforce"
-      className="relative w-full shrink-0 flex-none bg-[#0A0E1A] text-[#EEF0F6]"
+      className="relative w-full shrink-0 flex-none bg-[#0F0F11] text-[#EEF0F6]"
       style={{ height: "650vh", minHeight: "650vh" }}
     >
       {/* Sticky Fullscreen Presentation Stage */}
       <div
         ref={stickyRef}
-        className="sticky top-0 h-screen w-full overflow-hidden select-none"
+        className="sticky top-0 h-screen w-full overflow-hidden select-none bg-[#0F0F11]"
         style={{
           background:
-            "radial-gradient(120% 90% at 50% 55%, #101730 0%, #0A0E1A 65%)",
+            "radial-gradient(125% 125% at 50% 50%, #0F0F11 50%, #3ca2fa28 100%)",
         }}
       >
         {/* Orbital Stage (Glow, SVG Tracks, Ticks, Comet, and 4 Node Orbs) */}
@@ -251,12 +251,12 @@ export function RadialOrbitalTimeline() {
           ref={headerRef}
           className="absolute top-8 left-6 sm:left-12 lg:left-16 z-30 max-w-2xl pointer-events-none will-change-transform"
         >
-          <div className="mb-2.5 text-[11px] font-semibold tracking-wider text-blue-400 uppercase pointer-events-auto">
+          <div className="mb-2.5 text-[11px] font-semibold tracking-wider text-[#3ca2fa] uppercase pointer-events-auto">
             The workforce
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
             Meet your AI team.{" "}
-            <span className="bg-gradient-to-r from-blue-300 via-blue-400 to-blue-500 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#93c5fd] via-[#60a5fa] to-[#3ca2fa] bg-clip-text text-transparent">
               Built for Healthcare.
             </span>
           </h2>
