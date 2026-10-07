@@ -8,10 +8,8 @@ export default function HomePage() {
       {/* 1. Navbar with the expanding tubelight attached to its bottom edge */}
       <Navbar />
 
-      {/* 2. Main Hero Section with interactive mouse-reactive canvas waves */}
-      <div className="relative flex-1 flex flex-col">
-        <GlowyWavesHero />
-      </div>
+      {/* 2. Main Hero Section with interactive mouse-reactive canvas waves (Full Screen 100vh) */}
+      <GlowyWavesHero />
 
       {/* 3. The Workforce: Scroll-Driven Radial Orbital Ferris Wheel */}
       <RadialOrbitalTimeline />

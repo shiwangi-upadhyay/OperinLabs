@@ -32,7 +32,7 @@ const itemVariants: Variants = {
 export function GlowyWavesHero() {
   return (
     <section
-      className="relative isolate flex min-h-[calc(100vh-4rem)] w-full items-center justify-center overflow-hidden bg-background pt-16 sm:pt-20 pb-24"
+      className="relative isolate flex h-screen h-[100dvh] min-h-[640px] w-full items-center justify-center overflow-hidden bg-background pt-16 sm:pt-20 pb-20"
       role="region"
       aria-label="Glowing waves hero section"
     >
