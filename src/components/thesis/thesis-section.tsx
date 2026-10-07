@@ -55,7 +55,7 @@ export function ThesisSection() {
   return (
     <section
       id="thesis"
-      className="relative w-full shrink-0 flex-none bg-[#0F0F11] text-[#EEF0F6] pt-12 sm:pt-16 lg:pt-20 pb-28 sm:pb-36 px-6 sm:px-12 lg:px-16 overflow-x-clip"
+      className="relative w-full shrink-0 flex-none bg-[#0F0F11] text-[#EEF0F6] pt-10 sm:pt-14 lg:pt-16 pb-16 sm:pb-24 px-6 sm:px-12 lg:px-16 overflow-x-clip"
       style={{
         background:
           "radial-gradient(125% 125% at 50% 20%, #0F0F11 50%, #3ca2fa33 100%)",
@@ -65,14 +65,14 @@ export function ThesisSection() {
       <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[780px] h-[480px] rounded-full bg-[#3ca2fa]/[0.05] blur-[170px] pointer-events-none -z-10" />
       <div className="absolute bottom-20 right-10 w-[500px] h-[500px] rounded-full bg-[#3ca2fa]/[0.04] blur-[150px] pointer-events-none -z-10" />
 
-      <div className="max-w-[1360px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <div className="max-w-[1360px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
         {/* ── LEFT COLUMN: STICKY MASTHEAD (Exact colors matching The Workforce & Footer) ── */}
         <div className="lg:col-span-5 lg:sticky lg:top-28 flex flex-col items-start">
           <div className="mb-2.5 text-[11px] font-semibold tracking-wider text-[#3ca2fa] uppercase">
             The thesis
           </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
-            Healthcare software shouldn't just record work.{" "}
+            Software shouldn't record work.{" "}
             <span className="bg-gradient-to-r from-[#93c5fd] via-[#60a5fa] to-[#3ca2fa] bg-clip-text text-transparent">
               It should do it.
             </span>
@@ -83,7 +83,7 @@ export function ThesisSection() {
         </div>
 
         {/* ── RIGHT COLUMN: VERTICALLY SCROLLABLE CARDS (Reduced width, reasonable vertical gaps) ── */}
-        <div className="lg:col-span-7 flex flex-col items-start lg:items-end gap-8 sm:gap-10">
+        <div className="lg:col-span-7 flex flex-col items-start lg:items-end gap-5 sm:gap-6">
           {THESIS_ITEMS.map((item) => {
             const Icon = item.icon
             return (
@@ -129,3 +129,5 @@ export function ThesisSection() {
     </section>
   )
 }
+
+export default ThesisSection

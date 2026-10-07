@@ -283,7 +283,7 @@ export function Footer() {
           </div>
         </div>
 
-        <hr className="border-t border-gray-700/60 my-8" />
+        <hr className="border-t border-gray-700/60 my-6" />
 
         {/* Footer bottom */}
         <div className="flex flex-col md:flex-row justify-between items-center text-xs text-zinc-400 space-y-4 md:space-y-0">
@@ -319,9 +319,9 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Text hover effect using user component structure */}
-      <div className="lg:flex hidden h-[30rem] -mt-52 -mb-36 justify-center">
-        <TextHoverEffect text="OperinLabs" className="z-50" />
+      {/* Text hover effect positioned cleanly with a snug, balanced gap */}
+      <div className="lg:flex hidden h-[10rem] sm:h-[12rem] -mt-6 sm:-mt-8 mb-2 justify-center pointer-events-auto">
+        <TextHoverEffect text="OperinLabs" className="w-full max-w-6xl" />
       </div>
 
       <FooterBackgroundGradient />
