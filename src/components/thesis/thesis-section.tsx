@@ -1,18 +1,10 @@
 "use client"
 
 import React from "react"
-import { motion } from "framer-motion"
 import { Activity, Languages, ShieldCheck } from "lucide-react"
+import { CircularCarousel, type CarouselItem } from "@/components/ui/circular-carousel"
 
-interface ThesisPillar {
-  id: string
-  title: string
-  description: string
-  icon: React.ComponentType<{ className?: string }>
-  highlights: string[]
-}
-
-const THESIS_ITEMS: ThesisPillar[] = [
+const THESIS_ITEMS: CarouselItem[] = [
   {
     id: "1",
     title: "Every Call Has Intent",
@@ -55,77 +47,37 @@ export function ThesisSection() {
   return (
     <section
       id="thesis"
-      className="relative w-full shrink-0 flex-none bg-[#0F0F11] text-[#EEF0F6] pt-10 sm:pt-14 lg:pt-16 pb-16 sm:pb-24 px-6 sm:px-12 lg:px-16 overflow-x-clip"
+      aria-label="The Thesis"
+      className="relative w-full bg-[#0F0F11] text-[#EEF0F6] min-h-screen lg:min-h-[100dvh] flex flex-col justify-start pt-20 sm:pt-28 pb-16 sm:pb-24 px-6 sm:px-10 lg:px-14 overflow-hidden"
       style={{
         background:
           "radial-gradient(125% 125% at 50% 20%, #0F0F11 50%, #3ca2fa33 100%)",
       }}
     >
-      {/* Ambient Lighting Accents matching Footer */}
+      {/* Ambient Lighting Accents */}
       <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[780px] h-[480px] rounded-full bg-[#3ca2fa]/[0.05] blur-[170px] pointer-events-none -z-10" />
       <div className="absolute bottom-20 right-10 w-[500px] h-[500px] rounded-full bg-[#3ca2fa]/[0.04] blur-[150px] pointer-events-none -z-10" />
 
-      <div className="max-w-[1360px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-        {/* ── LEFT COLUMN: STICKY MASTHEAD (Exact colors matching The Workforce & Footer) ── */}
-        <div className="lg:col-span-5 lg:sticky lg:top-28 flex flex-col items-start">
-          <div className="mb-2.5 text-[11px] font-semibold tracking-wider text-[#3ca2fa] uppercase">
-            The thesis
+      <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start w-full">
+        {/* ── LEFT: HEADING (Anchored firmly at the top-left of the section) ── */}
+        <div className="lg:col-span-5 flex flex-col items-start pt-0">
+          <div className="mb-3 text-[11px] font-mono font-bold tracking-[0.25em] text-[#3ca2fa] uppercase">
+            THE THESIS
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
             Software shouldn't record work.{" "}
             <span className="bg-gradient-to-r from-[#93c5fd] via-[#60a5fa] to-[#3ca2fa] bg-clip-text text-transparent">
               It should do it.
             </span>
           </h2>
-          <p className="mt-2 text-xs sm:text-sm text-[#AEB5CA] leading-relaxed max-w-xl">
+          <p className="mt-3.5 text-sm sm:text-base text-zinc-400 font-normal leading-relaxed max-w-xl">
             We believe the next generation of healthcare software won't just help teams do their work — it will do the work with them. AI should understand clinical intent, execute workflows, and complete operations 24/7.
           </p>
         </div>
 
-        {/* ── RIGHT COLUMN: VERTICALLY SCROLLABLE CARDS (Reduced width, reasonable vertical gaps) ── */}
-        <div className="lg:col-span-7 flex flex-col items-start lg:items-end gap-5 sm:gap-6">
-          {THESIS_ITEMS.map((item) => {
-            const Icon = item.icon
-            return (
-              <motion.div
-                key={item.id}
-                tabIndex={0}
-                role="article"
-                initial={{ opacity: 0, y: 32 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="w-full max-w-[500px] relative flex flex-col justify-between min-h-[380px] sm:min-h-[420px] rounded-3xl border border-white/[0.08] bg-[#121217]/85 p-7 sm:p-9 lg:p-10 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.65)] hover:border-[#3ca2fa]/30 focus:border-[#3ca2fa]/30 focus:outline-none transition-colors duration-300"
-              >
-                {/* Minimal line icon in electric blue, directly on card */}
-                <div className="mb-12 sm:mb-16">
-                  <Icon className="size-7 text-[#3ca2fa] stroke-[1.75]" />
-                </div>
-
-                {/* Body Content with clean, balanced spacing */}
-                <div className="w-full flex flex-col">
-                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white mb-3.5 leading-snug">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm text-[#AEB5CA] leading-relaxed mb-5 font-normal">
-                    {item.description}
-                  </p>
-
-                  {/* Highlights Bullet List without tick icons */}
-                  <div className="flex flex-col gap-2.5">
-                    {item.highlights.map((point, pIdx) => (
-                      <p
-                        key={pIdx}
-                        className="text-xs sm:text-[13px] text-[#CBD5E1]/90 leading-relaxed"
-                      >
-                        {point}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            )
-          })}
+        {/* ── RIGHT: CARDS (Balanced vertically with equal top and bottom margins) ── */}
+        <div className="lg:col-span-7 flex flex-col items-center justify-center w-full pt-6 sm:pt-10 lg:pt-16">
+          <CircularCarousel items={THESIS_ITEMS} />
         </div>
       </div>
     </section>
