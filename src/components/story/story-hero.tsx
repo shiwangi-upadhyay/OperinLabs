@@ -111,7 +111,8 @@ export function StoryHero() {
       const answer = smoothstep(0.56, 0.68, p) // the call gets picked up
       const settle = smoothstep(0.7, 0.9, p) // visual moves up to make room for the headline
 
-      const oy = cy - settle * size * 0.22
+      // Waveform center: lifts slightly during answer so it never collides with 'Until now.' below
+      const oy = cy - answer * (size * 0.06) - settle * size * 0.22
       const scale = 1 - settle * 0.35
       const orbAlpha = 1 - answer // the cold orb disappears once the call is answered
 
@@ -127,7 +128,7 @@ export function StoryHero() {
           const rad = 50 * scale + phase * maxR
           const alpha = (1 - phase) * (1 - phase) * (0.1 + 0.3 * ringing) * orbAlpha
           ctx.beginPath()
-          ctx.arc(cx, oy, rad, 0, Math.PI * 2)
+          ctx.arc(cx, cy, rad, 0, Math.PI * 2)
           ctx.strokeStyle = `rgba(${rgb},${alpha})`
           ctx.lineWidth = 1.2
           ctx.stroke()
@@ -137,16 +138,16 @@ export function StoryHero() {
         const ringPulse = ringing > 0.4 ? Math.max(0, Math.sin(t * 9)) * Math.max(0, Math.sin(t * 2.2)) : 0
         const coreR = (46 + ringPulse * 8) * scale * (1 - answer * 0.5)
 
-        const glow = ctx.createRadialGradient(cx, oy, 0, cx, oy, coreR * 3)
+        const glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, coreR * 3)
         glow.addColorStop(0, `rgba(${rgb},${0.16 * orbAlpha})`)
         glow.addColorStop(1, `rgba(${rgb},0)`)
         ctx.fillStyle = glow
         ctx.beginPath()
-        ctx.arc(cx, oy, coreR * 3, 0, Math.PI * 2)
+        ctx.arc(cx, cy, coreR * 3, 0, Math.PI * 2)
         ctx.fill()
 
         ctx.beginPath()
-        ctx.arc(cx, oy, coreR, 0, Math.PI * 2)
+        ctx.arc(cx, cy, coreR, 0, Math.PI * 2)
         ctx.fillStyle = `rgba(${rgb},${0.32 * orbAlpha})`
         ctx.fill()
         ctx.strokeStyle = `rgba(${rgb},${0.55 * orbAlpha})`
@@ -159,7 +160,7 @@ export function StoryHero() {
         const bars = 47
         const gap = 8 * (1 - settle * 0.25)
         const barW = 3
-        const maxH = size * 0.2 * (1 - settle * 0.3)
+        const maxH = size * 0.17 * (1 - settle * 0.3)
         const startX = cx - ((bars - 1) * gap) / 2
         for (let i = 0; i < bars; i++) {
           const x = startX + i * gap
@@ -172,8 +173,8 @@ export function StoryHero() {
           ctx.fillRect(x - barW / 2, oy - bh / 2, barW, bh)
         }
 
-        // Live-call chip under the waveform
-        const chipY = oy + maxH / 2 + 38
+        // Live-call chip neatly tucked under the waveform
+        const chipY = oy + maxH / 2 + 22
         ctx.beginPath()
         ctx.arc(cx - 62, chipY, 3.5, 0, Math.PI * 2)
         ctx.fillStyle = `rgba(52,211,153,${answer})`
@@ -238,7 +239,10 @@ export function StoryHero() {
           </motion.div>
 
           {/* C — The turn */}
-          <motion.div style={beatC} className="absolute max-w-2xl">
+          <motion.div
+            style={beatC}
+            className="absolute top-[63%] sm:top-[65%] max-w-2xl px-6 text-center"
+          >
             <h2 className="text-5xl font-semibold tracking-tight text-white sm:text-7xl">Until now.</h2>
           </motion.div>
 
