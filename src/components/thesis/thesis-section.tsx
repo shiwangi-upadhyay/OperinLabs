@@ -48,7 +48,7 @@ export function ThesisSection() {
     <section
       id="thesis"
       aria-label="The Thesis"
-      className="relative w-full bg-[#0F0F11] text-[#EEF0F6] min-h-screen lg:min-h-[100dvh] flex flex-col justify-start pt-20 sm:pt-28 pb-16 sm:pb-24 px-6 sm:px-10 lg:px-14 overflow-hidden"
+      className="relative w-full bg-[#0F0F11] text-[#EEF0F6] min-h-screen lg:min-h-[100dvh] flex flex-col justify-start pt-14 sm:pt-20 pb-16 sm:pb-22 px-6 sm:px-10 lg:px-14 overflow-hidden"
       style={{
         background:
           "radial-gradient(125% 125% at 50% 20%, #0F0F11 50%, #3ca2fa33 100%)",
