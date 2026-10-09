@@ -9,15 +9,7 @@ Next-generation autonomous AI healthcare workforce platform.
 [![Framer Motion](https://img.shields.io/badge/Framer_Motion-v14-black?style=flat-square&logo=framer)](https://motion.dev/)
 [![Deployment](https://img.shields.io/badge/Deployed-Vercel-black?style=flat-square&logo=vercel)](https://operin-labs-seven.vercel.app/)
 
-[Live Demo](https://operin-labs-seven.vercel.app/) • [Original Website](https://www.operinlabs.com/) • [Technical Project Audit](./OPERINLABS_TECHNICAL_AUDIT.md)
-
----
-
-## Preview
-
-<p align="center">
-  <img src="./preview.png" alt="OperinLabs Website Redesign Preview" width="100%" style="max-width: 900px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1);" />
-</p>
+[Live Demo](https://operin-labs-seven.vercel.app/) • [Original Website](https://www.operinlabs.com/)
 
 ---
 
@@ -90,11 +82,10 @@ This project is an end-to-end frontend reconstruction of the public OperinLabs w
 ```
 OperinLabs/
 ├── public/
-│   ├── assets/
-│   │   ├── logo-light.png                     # Transparent light brand logo
-│   │   ├── logo.png                           # Primary icon
-│   │   └── operinlabs-logo.png                # Full brandmark
-│   └── preview.png                            # Project preview screenshot
+│   └── assets/
+│       ├── logo-light.png                     # Transparent light brand logo
+│       ├── logo.png                           # Primary icon
+│       └── operinlabs-logo.png                # Full brandmark
 ├── src/
 │   ├── app/
 │   │   ├── globals.css                        # Tailwind v4 @theme, custom keyframes & base resets
@@ -128,7 +119,6 @@ OperinLabs/
 │   │   └── utils.ts                           # Tailwind class merging utility (cn)
 │   └── types/
 │       └── workforce.ts                       # TypeScript interfaces for workforce nodes and tabs
-├── OPERINLABS_TECHNICAL_AUDIT.md              # Exhaustive engineering audit report
 ├── package.json
 └── tsconfig.json
 ```
