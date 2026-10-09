@@ -196,8 +196,8 @@ export function Footer() {
     },
     {
       icon: <Globe size={18} />,
-      label: "OperinLabs",
-      href: "#",
+      label: "Official Website",
+      href: "https://www.operinlabs.com/",
     },
   ]
 
@@ -313,7 +313,15 @@ export function Footer() {
             </button>
             {/* Copyright */}
             <p className="text-center md:text-left">
-              &copy; {new Date().getFullYear()} OperinLabs. All rights reserved.
+              &copy; {new Date().getFullYear()} OperinLabs. Redesign concept ·{" "}
+              <a
+                href="https://www.operinlabs.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-zinc-300 hover:text-[#3ca2fa] transition-colors underline underline-offset-2"
+              >
+                Original Website ↗
+              </a>
             </p>
           </div>
         </div>

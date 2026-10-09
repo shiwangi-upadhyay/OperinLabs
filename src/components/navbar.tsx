@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react"
 import { motion, useScroll, useMotionValueEvent } from "framer-motion"
-import { X } from "lucide-react"
+import { X, ArrowUpRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const navItems = [
@@ -67,27 +67,45 @@ export function Navbar() {
     >
       {/* Main Top Row */}
       <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-14 py-4 sm:py-5 flex items-center justify-between gap-4 sm:gap-6 pointer-events-auto">
-        {/* Left: OperinLabs Logo */}
-        <a href="#" className="flex items-center select-none shrink-0">
-          <img
-            src="/assets/logo-light.png"
-            alt="OperinLabs"
-            className="h-[24px] sm:h-[26px] w-auto block"
-            onError={(e) => {
-              const target = e.currentTarget
-              target.style.display = "none"
-              if (target.nextElementSibling) {
-                (target.nextElementSibling as HTMLElement).style.display = "block"
-              }
-            }}
-          />
-          <span
-            style={{ display: "none" }}
-            className="text-xl font-bold tracking-tight text-[#EEF0F6]"
+        {/* Left: OperinLabs Logo + Original Site Pill Badge */}
+        <div className="flex items-center gap-2.5 sm:gap-3.5 shrink-0">
+          <a href="#" className="flex items-center select-none shrink-0">
+            <img
+              src="/assets/logo-light.png"
+              alt="OperinLabs"
+              className="h-[24px] sm:h-[26px] w-auto block"
+              onError={(e) => {
+                const target = e.currentTarget
+                target.style.display = "none"
+                if (target.nextElementSibling) {
+                  (target.nextElementSibling as HTMLElement).style.display = "block"
+                }
+              }}
+            />
+            <span
+              style={{ display: "none" }}
+              className="text-xl font-bold tracking-tight text-[#EEF0F6]"
+            >
+              Operin<span className="text-[#5B86FF]">Labs</span>
+            </span>
+          </a>
+
+          <a
+            href="https://www.operinlabs.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-medium text-zinc-400 hover:text-white border border-white/12 hover:border-[#3ca2fa]/40 bg-[#070A14]/40 hover:bg-[#3ca2fa]/10 transition-all backdrop-blur-md shadow-sm group select-none"
+            title="View original official OperinLabs website"
           >
-            Operin<span className="text-[#5B86FF]">Labs</span>
-          </span>
-        </a>
+            <span className="hidden md:inline text-zinc-500 group-hover:text-zinc-400 transition-colors">
+              Redesign Concept ·
+            </span>
+            <span className="text-zinc-300 group-hover:text-white transition-colors">
+              Original Site
+            </span>
+            <ArrowUpRight className="size-3 text-zinc-400 group-hover:text-[#3ca2fa] transition-colors" />
+          </a>
+        </div>
 
         {/* Right Section: Nav Items (slides down from top next to button) + Action Buttons */}
         <div className="flex items-center gap-3 sm:gap-5 lg:gap-7 shrink-0">
@@ -179,6 +197,15 @@ export function Navbar() {
             <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#3ca2fa] transition-all duration-200 group-hover:w-full" />
           </a>
         ))}
+        <a
+          href="https://www.operinlabs.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 text-xs font-medium text-[#3ca2fa] hover:text-white transition-colors py-1 tracking-wide whitespace-nowrap"
+        >
+          <span>Original Site</span>
+          <ArrowUpRight className="size-3" />
+        </a>
       </motion.nav>
     </motion.header>
   )
